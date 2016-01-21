@@ -1,19 +1,13 @@
 FROM alpine:3.2
 
 RUN apk add -U \
-	gcc \
-	musl-dev \
 	py-pip \
-	python-dev \
+	py-twisted \
+	python \
  && pip install --no-cache-dir \
 	simplepypi \
- && apk del \
-	gcc \
-	musl-dev \
+ && apk del --purge \
 	py-pip \
-	python-dev \
- && apk add -U \
-	python \
  && rm -rf /var/cache/apk/*
 
 EXPOSE 8000/tcp
